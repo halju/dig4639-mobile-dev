@@ -12,6 +12,5 @@ function scopeDemo(x1) {
         var x = 0;
     }
 }
-
 scopeDemo(x);
 console.log(x);
