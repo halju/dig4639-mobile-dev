@@ -15,3 +15,6 @@ I would like to become a front-end designer or a content creator.
 1. Item 1 [Google](https://www.google.com/)
 1. Item 2
 1. Item 3
+
+## Conflicts
+This section represents code on the server that isn't on the local repository.
