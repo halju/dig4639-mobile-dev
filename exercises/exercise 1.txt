@@ -1,0 +1,18 @@
+Mobile App: YouTube
+A user will be presented with various button interfaces when watching a video.
+If they choose to click on the like button, the client will check to see if the user is signed in.
+If they are not signed in, a popup will appear that will prompt them to log in. The like button will not change.
+If they are signed in, the data is stored on the server and the button changes colors. The data is saved so that the user does not have to click like again.
+
+Pseudocode:
+if user clicks on like button:
+    check to see if user is signed in
+    if user is not signed in
+        show popup that has a button for them to click
+        if button is clicked
+            redirect them to sign in page
+    if user is signed in
+        send data to server
+        change element display to indicate that the like button has been pressed
+
+Contributors: halju
