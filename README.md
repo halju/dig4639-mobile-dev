@@ -6,5 +6,12 @@ The *ice* folder contains in-class exercises.
 
 ## About Me
 Haley Jundzil
+
 https://www.linkedin.com/in/haley-jundzil-485460184
+
 I would like to become a front-end designer or a content creator.
+
+## Merging
+1. Item 1 [Google](https://www.google.com/)
+1. Item 2
+1. Item 3
