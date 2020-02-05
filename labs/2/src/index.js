@@ -3,7 +3,7 @@ import Card from "./components/Card/index.js"
 
 function runOnLoad()
  {
-     element = document.createElement("div");
+     let element = document.createElement("div");
      element.id = "container";
      document.body.appendChild(element);
      var newTask = new Card({content:"Simple value provided"});
