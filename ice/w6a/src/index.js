@@ -151,7 +151,7 @@ function calculateWinner(squares) {
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c, d] = lines[i];
-    if (squares[a] && squares[a] && squares[a] === squares[c] && squares[b] && squares[a] === square[d]) {
+    if (squares[a] && squares[a] && squares[a] === squares[c] && squares[b] && squares[a] === squares[d]) {
       return squares[a];
     }
   }
