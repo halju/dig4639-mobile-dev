@@ -149,7 +149,7 @@ function calculateWinner(squares) {
     [0, 5, 10, 15],
     [3, 6, 9, 12],
     [0, 3, 12, 15],
-    [6, 7, 10, 11]
+    [5, 6, 9, 10]
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c, d] = lines[i];
