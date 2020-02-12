@@ -150,8 +150,8 @@ function calculateWinner(squares) {
     [3, 6, 9, 12]
   ];
   for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+    const [a, b, c, d] = lines[i];
+    if (squares[a] && squares[a] && squares[a] === squares[c] && squares[b] && squares[a] === square[d]) {
       return squares[a];
     }
   }
