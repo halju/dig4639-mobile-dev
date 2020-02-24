@@ -29,10 +29,8 @@ function App() {
     <TodoItem content="Item 3"/>
   ] */
   return (
-    <div>
-      {todoList.filter((v) => v.completed).map (
-        (v) => <TodoItem content={v.content} />)}
-    </div>
+    todoList.filter((v) => v.completed).map (
+      (v) => <TodoItem priority={v.priority} content={v.content} completed={v.completed} />)
   );
 }
 
