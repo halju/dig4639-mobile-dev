@@ -1,0 +1,19 @@
+{
+    "cards": [
+        {
+            "title": "Max",
+            "id": 1,
+            "content": "Enjoys the beach."
+        },
+        {
+            "title": "Maggie",
+            "id": 2,
+            "content": "Loves to run."
+        },
+        {
+            "title": "Buddy",
+            "id": 3,
+            "content": "Sniffs butts."
+        }
+    ]
+}
