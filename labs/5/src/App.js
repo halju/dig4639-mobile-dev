@@ -8,13 +8,11 @@ class App extends React.Component {
   }
   
   async getServerData() {
-    // const response = await fetch("http://localhost:3001")
     const response = await fetch("https://api.weather.gov/gridpoints/MLB/25,69/forecast")
     console.log("Received response from server!")
     console.log(response)
     let obj = await response.json()
     console.log("Processed response as JSON: ", obj)
-    // this.setState({content:obj.b})
     this.setState({list:obj})
   }
 
