@@ -11,9 +11,9 @@ class App extends React.Component {
     const response = await fetch("https://api.weather.gov/gridpoints/MLB/25,69/forecast")
     console.log("Received response from server!")
     console.log(response)
-    let obj = await response.json()
+    const obj = await response.json()
     console.log("Processed response as JSON: ", obj)
-    this.setState({list:obj})
+    this.setState({list:obj.properties.periods})
   }
 
   componentDidMount() {
@@ -25,10 +25,10 @@ class App extends React.Component {
     return (
       <div>
         <p>{this.state.content}</p>
-        {this.state.list.map((listObject, index) =>
-        <Card key={index} title={listObject.name}>
-          {listObject.temperature}{listObject.temperatureUnit}
-          {listObject.detailedForecast}
+        {this.state.list.map((obj, index) =>
+        <Card key={index} title={obj.name}>
+          {obj.temperature}{obj.temperatureUnit}
+          {obj.detailedForecast}
           </Card>
         )}
       </div>
