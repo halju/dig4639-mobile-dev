@@ -27,8 +27,8 @@ class App extends React.Component {
         <p>{this.state.content}</p>
         {this.state.list.map((obj, index) =>
         <Card key={index} title={obj.name}>
-          {obj.temperature}{obj.temperatureUnit}
-          {obj.detailedForecast}
+          <h1>{obj.temperature} {obj.temperatureUnit}</h1>
+          <p>{obj.detailedForecast}</p>
           </Card>
         )}
       </div>
