@@ -32,7 +32,7 @@ class Home extends React.Component {
       this.setState({titleText: "This is the end",
         currentState: SCORE_STATE,
         counter: 0})
-    } else {
+    } else{
       this.setState({
         currentQuestion: this.state.currentQuestion + 1
       })
@@ -50,11 +50,18 @@ class Home extends React.Component {
       this.setState({counter : this.state.counter+1})
       if(this.state.counter < this.timeLimit) {
         this.setState({titleText:"Begin the quiz! " + this.state.counter})
-      } else {
+      } else if(this.state.counter >= 0) {
         this.setState({titleText:"Time's up!"})
         clearInterval(this.timer)
-      }
-    }, 1000);
+        this.setState({counter:0,
+          currentQuestion: this.state.currentQuestion + 1,
+          currentScore: 0})
+          this.timer = setInterval(() => { 
+            console.log("INTERVAL CALLED")
+            this.setState({counter : this.state.counter+1})
+            }, 1000);
+        }
+      }, 1000);
   }
   render(props) {
     console.log("RENDER CALLED")
@@ -74,7 +81,7 @@ class Home extends React.Component {
         :
         <>
         <Text style={styles.title}>Your score is {this.state.currentScore}/3</Text>
-        <Button style={styles.button} title="Restart" onPress={() => this.start()}></Button>
+        <Text style={styles.fixToText}><Button style={styles.button} title="Restart" onPress={() => this.start()}></Button></Text>
         </>}
       </View>
     )
@@ -85,23 +92,40 @@ const styles = StyleSheet.create({
   container: {
    paddingTop: 22,
    alignSelf: "center",
+   alignItems: "center",
   },
   item: {
     padding: 10,
     height: 44,
     alignSelf: "center",
+    alignItems: "center",
   },
   title: {
     padding: 10,
     fontSize: 30,
     color: "#14151c",
     fontWeight: "bold",
-    textAlign: "center"
-    
+    textAlign: "center",
+    fontFamily: "HelveticaNeue"
   },
   button: {
     padding: 10,
     alignSelf: "center",
+    margin: 10,
+    lineHeight: 110
+  },
+  button: {
+    padding: 10,
+    alignSelf: "center",
+    margin: 10,
+    lineHeight: 110,
+    backgroundColor: "#5687b8",
+    color: "#14151c",
+  },
+  fixToText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 5,
   }
 });
 

@@ -1,6 +1,6 @@
 [
     {
-      "question": "What is the scientific name for brown rats?",
+      "question": "1. What is the scientific name for brown rats?",
       "possibleAnswers":
       [
         {"text":"Rattus rattus",
@@ -14,7 +14,7 @@
       ]
     },
     {
-      "question": "What are domesticated rats used for?",
+      "question": "2. What are domesticated rats used for?",
       "possibleAnswers":
       [
         {"text":"Scientific research",
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "question": "What is a rat's diet?",
+      "question": "3. What is a rat's diet?",
       "possibleAnswers":
       [
         {"text":"Omnivore",
