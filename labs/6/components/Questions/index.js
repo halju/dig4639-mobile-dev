@@ -1,15 +1,14 @@
 import React from 'react'
+import { Text, Button } from 'react-native'
 
 class Questions extends React.Component {
 render() {
   return( 
     <>
-    <h2>{this.props.question}</h2>
-    {this.props.answers.map((v) => {
-      return <input type="button" 
-      value={v.text} 
-      className="answerButton" 
-      onClick={() => this.props.nextQuestion()}></input>
+    <Text>{this.props.question}</Text>
+    {this.props.answers.map((v, i) => {
+      return <Button key={i} title={v.text}
+      onPress={() => this.props.nextQuestion(v.correct)}></Button>
     })}
     </>
     )
