@@ -31,14 +31,42 @@
       "question": "3. What is a rat's diet?",
       "possibleAnswers":
       [
-        {"text":"Omnivore",
-        "correct":true },
         {"text":"Herbivore",
         "correct":false },
+        {"text":"Omnivore",
+        "correct":true },
         {"text":"Carnivore",
         "correct":false },
         {"text":"Granivore",
         "correct":false }
+      ]
+    },
+    {
+      "question": "4. Rats come in the zodiac in which order?",
+      "possibleAnswers":
+      [
+        {"text":"First",
+        "correct":true },
+        {"text":"Second",
+        "correct":false },
+        {"text":"Third",
+        "correct":false },
+        {"text":"Fourth",
+        "correct":false }
+      ]
+    },
+    {
+      "question": "5. What do rats use their tails for?",
+      "possibleAnswers":
+      [
+        {"text":"Balance",
+        "correct":false },
+        {"text":"Heat regulation",
+        "correct":false },
+        {"text":"Communication",
+        "correct":false },
+        {"text":"All of the above",
+        "correct":true }
       ]
     }
   ]

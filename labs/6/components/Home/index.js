@@ -11,7 +11,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      titleText: "Welcome to the Rodent Quiz!",
+      titleText: "Welcome to the Rat Quiz!",
       currentState: TITLE_STATE,
       counter: 0,
       currentQuestion: 0,
@@ -80,7 +80,7 @@ class Home extends React.Component {
         </>
         :
         <>
-        <Text style={styles.title}>Your score is {this.state.currentScore}/3</Text>
+        <Text style={styles.title}>Your score is {this.state.currentScore}/5!</Text>
         <Text style={styles.fixToText}><Button style={styles.button} title="Restart" onPress={() => this.start()}></Button></Text>
         </>}
       </View>
