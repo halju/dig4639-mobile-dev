@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, } from 'react-native';
 import Home from './components/Home/index.js';
-import Questions from './components/Questions/index.js';
-import questions from './questions.json';
+
 
 class App extends Component {
   render() {

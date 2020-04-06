@@ -1,6 +1,6 @@
 import React from 'react';
-import Questions from './components/Questions/index.js';
-import questions from './questions.json';
+import Questions from '../Questions';
+import questions from '.../questions.json';
 
 const TITLE_STATE = 0
 const QUESTION_STATE = 1
