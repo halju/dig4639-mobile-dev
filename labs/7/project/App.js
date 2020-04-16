@@ -1,39 +1,20 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button, Input } from 'react-native-elements';
+import { Input, Button } from 'react-native-elements';
 import Contacts from './components/Contacts/index.js';
 //import Profile from './components/profile/index.js';
 
 class App extends Component {
-  constructor(props) {
+
+ constructor(props) {
     super(props);
-    this.nameRef = React.createRef;
-    this.numberRef = React.createRef;
-  }
-  state = {contacts:[]}
-  userProfile() {
-    fetch('http://plato.mrl.ai:8080/profile', {
-        method:'GET',
-        headers: {
-            API: 'jundzil',
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-        }
-    })
-    .then((response) => {
-      return response.json()
-    })
-    .then((body) => {
-      console.log(body);
-      if (body.profile !== undefined) {
-          console.log("Successful");
-          this.setState({profile:body.profile})
-        } else {
-            console.log("Unsuccessful");
-        } 
-    });
-      
-  }
+    this.state = {
+    submitDisabled: true,
+    nameText: '',
+    numberText: '',
+    contacts:[]
+    }
+  } 
   componentDidMount() {
     console.log("fetch")
     fetch('http://plato.mrl.ai:8080/contacts', {
@@ -56,6 +37,28 @@ class App extends Component {
             console.log("Unsuccessful");
         }
       });
+  }
+  userProfile() {
+    fetch('http://plato.mrl.ai:8080/profile', {
+        method:'GET',
+        headers: {
+            API: 'jundzil',
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+        }
+    })
+    .then((response) => {
+      return response.json()
+    })
+    .then((body) => {
+      console.log(body);
+      if (body.profile !== undefined) {
+          console.log("Successful");
+          this.setState({"name": user.name, "count": user.contacts.length});
+        } else {
+            console.log("Unsuccessful");
+        } 
+    }); 
   }
   removeContact(position) {
     fetch('http://plato.mrl.ai:8080/contacts/remove', {
@@ -80,10 +83,33 @@ class App extends Component {
         } 
       });
   }
-  addContact = (event) => {
-    event.preventDefault();
-    const name = this.nameRef.current.value;
-    const number = this.numberRef.current.value;
+  nameInput(name) {
+    if (name.length > 0) {
+      this.setState(
+        {
+          submitDisabled: false,
+          nameText: name
+        }
+      )
+    } else {
+      this.setState({ submitDisabled: true })
+      console.log(name);
+    }
+  }
+   numberInput(number) {
+    if (number.length > 0) {
+      this.setState(
+        {
+          submitDisabled: false,
+          numberText: number
+        }
+      )
+    } else {
+      this.setState({ submitDisabled: true })
+      console.log(number);
+    }
+  }
+  addContact() {
     fetch('http://plato.mrl.ai:8080/contacts/add', {
         method:'POST',
         headers: {
@@ -92,8 +118,8 @@ class App extends Component {
             Accept: 'application/json'
         },
         body: JSON.stringify({
-            name: this.state.nameRef,
-            number: this.state.numberRef
+            name: this.state.nameText,
+            number: this.state.numberText
         })
     })
     .then((response) => {
@@ -103,25 +129,25 @@ class App extends Component {
         console.log(body);
         if (body.added !== undefined) {
             console.log("Successful");
-            this.props.navigation.navigate('Added',
-            { Added: { name: name, number: number}})
+            this.setState({ name: name, number: number})
         } else {
-          console.log(this.state.nameRef);
-          console.log(this.state.numberRef);
+          console.log(this.state.nameText);
+          console.log(this.state.numberText);
         }
       })
   }
     render() {
         return (
             <View style={styles.container}>
+              <Text style={styles.title}>Hi</Text>
               <Text style={styles.title}>Contact List:{"\n"}</Text>
                 <View style={styles.paragraph}><Contacts contactList={this.state.contacts}
                  removeItem = {(position) => this.removeContact(position)} /></View>
-                <Text style={styles.title}>Add Your Own:{"\n"}</Text>
+                <Text style={styles.title}>{"\n"}Add Your Own:{"\n"}</Text>
                 <Input placeholder="Name"
-                    ref={this.state.nameText} />
+                    onChangeText={name => this.nameInput(name)} />
                 <Input placeholder="Number"
-                    ref={this.state.numberText} />
+                    onChangeText={number => this.numberInput(number)} />
                 <Button style={styles.button} title="ADD" onPress={() => this.addContact()}></Button>
             </View>
         );

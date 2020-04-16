@@ -5,8 +5,8 @@ class Contacts extends React.Component {
     render() {
       return (
           this.props.contactList.map((contact, i) =>
-          <View style={styles.view}><Text><Text style={styles.bold}>Name:</Text> {contact.name}{"\n"}<Text style={styles.bold}>Number:</Text> {contact.number}   </Text>
-          <Button style={styles.button} title="Remove" onPress={() => this.props.removeItem(i)}></Button></View>
+          <View style={styles.view}><Text><Text style={styles.bold}>Name: </Text>{contact.name}{"\n"}<Text style={styles.bold}>Number: </Text>{contact.number}   </Text>
+          <Button style={styles.button} title="Remove" onPress={() => this.props.removeItem(i)}></Button></View> 
           )
         )
     }
