@@ -140,10 +140,10 @@ class App extends Component {
         return (
             <View style={styles.container}>
               <Text style={styles.title}>Hi</Text>
-              <Text style={styles.title}>Contact List:{"\n"}</Text>
+              <Text style={styles.subtitle}>Contact List:{"\n"}</Text>
                 <View style={styles.paragraph}><Contacts contactList={this.state.contacts}
                  removeItem = {(position) => this.removeContact(position)} /></View>
-                <Text style={styles.title}>{"\n"}Add Your Own:{"\n"}</Text>
+                <Text style={styles.subtitle}>{"\n"}Add Your Own:{"\n"}</Text>
                 <Input placeholder="Name"
                     onChangeText={name => this.nameInput(name)} />
                 <Input placeholder="Number"
@@ -179,6 +179,14 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
     title: {
+      padding: 10,
+      fontSize: 42,
+      color: "#14151c",
+      fontWeight: "black",
+      textAlign: "center",
+      fontFamily: "Roboto",
+    },
+    subtitle: {
       padding: 10,
       fontSize: 24,
       color: "#14151c",
