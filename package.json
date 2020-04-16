@@ -17,8 +17,7 @@
   },
   "homepage": "https://github.com/lucidbard/dig4639-mobile-dev#readme",
   "dependencies": {
-    "jest": "^24.9.0",
-    "react-native-elements": "^1.2.7"
+    "jest": "^24.9.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
