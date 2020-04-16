@@ -54,7 +54,7 @@ class App extends Component {
       console.log(body);
       if (body.profile !== undefined) {
           console.log("Successful");
-          this.setState({"name": user.name, "count": user.contacts.length});
+          this.setState({"name": user.name});
         } else {
             console.log("Unsuccessful");
         } 
@@ -139,7 +139,7 @@ class App extends Component {
     render() {
         return (
             <View style={styles.container}>
-              <Text style={styles.title}>Hi</Text>
+              <Text style={styles.title}>Hi, Jundzil. You have {this.state.contacts.length} contacts.</Text>
               <Text style={styles.subtitle}>Contact List:{"\n"}</Text>
                 <View style={styles.paragraph}><Contacts contactList={this.state.contacts}
                  removeItem = {(position) => this.removeContact(position)} /></View>
