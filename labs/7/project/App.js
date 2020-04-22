@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import Contacts from './components/Contacts/index.js';
-//import Profile from './components/profile/index.js';
 
 class App extends Component {
 
@@ -52,9 +51,9 @@ class App extends Component {
     })
     .then((body) => {
       console.log(body);
-      if (body.profile !== undefined) {
+      if (profile.name !== undefined) {
           console.log("Successful");
-          this.setState({"name": user.name});
+          this.setState({profile:profile.name});
         } else {
             console.log("Unsuccessful");
         } 
@@ -139,7 +138,7 @@ class App extends Component {
     render() {
         return (
             <View style={styles.container}>
-              <Text style={styles.title}>Hi, Jundzil. You have {this.state.contacts.length} contacts.</Text>
+              <Text style={styles.title}>Hi, {this.state.profile}. You have {this.state.contacts.length} contacts.</Text>
               <Text style={styles.subtitle}>Contact List:{"\n"}</Text>
                 <View style={styles.paragraph}><Contacts contactList={this.state.contacts}
                  removeItem = {(position) => this.removeContact(position)} /></View>
