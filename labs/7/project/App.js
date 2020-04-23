@@ -8,13 +8,36 @@ class App extends Component {
  constructor(props) {
     super(props);
     this.state = {
-    submitDisabled: true,
-    nameText: '',
-    numberText: '',
-    contacts:[]
+      submitDisabled: true,
+      nameText: '',
+      numberText: '',
+      profile: '',
+      contacts:[]
     }
   } 
   componentDidMount() {
+
+    fetch('http://plato.mrl.ai:8080/profile', {
+      method:'GET',
+      headers: {
+          API: 'jundzil',
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+      }
+    })
+    .then((response) => {
+      return response.json()
+    })
+    .then((body) => {
+      console.log(body);
+      if (body.name !== undefined) {
+          console.log("Successful");
+          this.setState({profile: body.name});
+        } else {
+            console.log("Unsuccessful");
+        } 
+    }); 
+
     console.log("fetch")
     fetch('http://plato.mrl.ai:8080/contacts', {
         method:'GET',
@@ -37,28 +60,7 @@ class App extends Component {
         }
       });
   }
-  userProfile() {
-    fetch('http://plato.mrl.ai:8080/profile', {
-        method:'GET',
-        headers: {
-            API: 'jundzil',
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-        }
-    })
-    .then((response) => {
-      return response.json()
-    })
-    .then((body) => {
-      console.log(body);
-      if (profile.name !== undefined) {
-          console.log("Successful");
-          this.setState({profile:profile.name});
-        } else {
-            console.log("Unsuccessful");
-        } 
-    }); 
-  }
+
   removeContact(position) {
     fetch('http://plato.mrl.ai:8080/contacts/remove', {
         method:'POST',
@@ -128,20 +130,32 @@ class App extends Component {
         console.log(body);
         if (body.added !== undefined) {
             console.log("Successful");
-            this.setState({ name: name, number: number})
+            // console.log(body.added.name)
+            // console.log(body.added.number)
+            console.log(body.added) // {name: '', number: ''}
+            //[{name: "oeaue", number: ".,p,.p"}]
+            let contactList = this.state.contacts //[{name: "oeaue", number: ".,p,.p"}];
+            console.log(contactList)
+            contactList.push(body.added)
+            // contactList.push(this.state.nameText);
+            // contactList.push(this.state.numberText);
+            this.setState({contacts: contactList})
         } else {
           console.log(this.state.nameText);
           console.log(this.state.numberText);
         }
       })
   }
+  // https://ucf.zoom.us/j/5173138026
     render() {
         return (
             <View style={styles.container}>
               <Text style={styles.title}>Hi, {this.state.profile}. You have {this.state.contacts.length} contacts.</Text>
               <Text style={styles.subtitle}>Contact List:{"\n"}</Text>
-                <View style={styles.paragraph}><Contacts contactList={this.state.contacts}
-                 removeItem = {(position) => this.removeContact(position)} /></View>
+                <View style={styles.paragraph}>
+                  <Contacts contactList={this.state.contacts}
+                    removeItem = {(position) => this.removeContact(position)} />
+                </View>
                 <Text style={styles.subtitle}>{"\n"}Add Your Own:{"\n"}</Text>
                 <Input placeholder="Name"
                     onChangeText={name => this.nameInput(name)} />
